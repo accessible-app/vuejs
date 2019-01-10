@@ -1,0 +1,22 @@
+.o-button {
+  -webkit-appearance: none;
+  background: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: 4px;
+  padding: .5rem .75rem;
+  border: 1px solid $color-brand-primary;
+  color: $color-brand-primary;
+
+  &:hover,
+  &:focus {
+    color: $textcolor-brand-primary;
+    background-color: $color-brand-primary;
+    outline: 0;
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+}
+
