@@ -61,10 +61,6 @@ export default {
           // Focus element
           focusTarget.focus();
 
-          // Remove tabindex from focustarget.
-          // Reason: https://axesslab.com/skip-links/#update-3-a-comment-from-gov-uk
-          focusTarget.removeAttribute("tabindex");
-
           // setAriaCurrent in navigation only after focus management
           this.setAriaCurrent();
         }, 0);
