@@ -1,6 +1,6 @@
 # vuejs implentation of accessible-app.
 
-**[FIND THE DEMO HERE](https://github.com/accessible-app/vuejs)**
+**[FIND THE DEMO HERE](https://vuejs.accessible-app.com)**
 
 ## Project setup
 ```
