@@ -10,7 +10,6 @@ export default {
 
 <style lang="scss" scoped>
 .c-logline {
-  font-family: IBM Plex Sans, sans-serif;
   font-style: italic;
   color: $color-brand-primary;
 

@@ -10,7 +10,9 @@ export default {
 
 <style lang="scss" scoped>
 .c-logo {
-  font-family: IBM Plex BoldSerif, serif;
+  font-family: Georgia, Droid Serif, serif;
+  font-style: italic;
+  font-weight: 700;
   font-size: 2.125rem;
   color: inherit;
   text-decoration: none;
