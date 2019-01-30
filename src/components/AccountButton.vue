@@ -10,7 +10,7 @@
       <menu-link>
         <router-link to="/settings">My Settings</router-link>
       </menu-link>
-      <menu-item @click="doSomething">Print this page</menu-item>
+      <menu-item @click="doSomething">Clear my Shopping cart</menu-item>
     </template>
   </menu-wrapper>
 </template>
