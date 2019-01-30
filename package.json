@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -11,6 +12,7 @@
     "portal-vue": "^1.5.0",
     "vue": "^2.5.17",
     "vue-a11y-dialog": "^0.3.1",
+    "vue-menu-button": "0.2.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

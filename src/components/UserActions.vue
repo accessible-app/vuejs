@@ -1,8 +1,11 @@
 <template>
-  <div>
+  <div class="c-user-actions">
     <!-- UserActions will consist of 2 dedicated menu buttons. Until then: -->
-    <button type="button" class="o-button " @click="openDialog">Shopping Cart <small>(0)</small></button>
-    <button type="button" class="o-button " @click="openDialog">My Account</button>
+    <button type="button" class="o-button " @click="openDialog">
+      Shopping Cart <small>(0)</small>
+    </button>
+    <!--<button type="button" class="o-button " @click="openDialog">My Account</button>-->
+    <account-button />
     <portal to="dialog">
       <a11y-dialog
         :class-names="{
@@ -19,8 +22,11 @@
       >
         <h1 class="dialog-title" slot="title">Content not yet ready</h1>
         <Hint>
-          The ShoppingCart and Account components are yet to be built (and documented).
-          <a class="o-link" href="https://marcus.io/blog/a11y-app-dialogs-modals"
+          The ShoppingCart and Account components are yet to be built (and
+          documented).
+          <a
+            class="o-link"
+            href="https://marcus.io/blog/a11y-app-dialogs-modals"
             >But since this is a modal window, you can read more about them on
             marcus.io</a
           >.
@@ -32,10 +38,11 @@
 
 <script>
 import Hint from "../components/Hint";
+import AccountButton from "../components/AccountButton";
 
 export default {
   name: "UserActions",
-  components: { Hint },
+  components: { Hint, AccountButton },
   methods: {
     assignDialogRef(dialog) {
       this.dialog = dialog;
@@ -50,4 +57,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .c-user-actions {
+    display: flex;
+  }
+  .c-user-actions button {
+    margin-right: 10px;
+  }
+
+</style>

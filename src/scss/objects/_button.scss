@@ -1,4 +1,5 @@
-.o-button {
+.o-button,
+[data-vue-menu-button] {
   -webkit-appearance: none;
   background: transparent;
   font-size: inherit;
