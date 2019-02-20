@@ -1,0 +1,38 @@
+.o-table {
+  overflow-y: auto;
+  width: 100%;
+  background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white), linear-gradient(to right, rgba(0, 0, 20, .25), rgba(255, 255, 255, 0)), linear-gradient(to left, rgba(0, 0, 20, .25), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 25px 100%, 25px 100%, 12px 100%, 12px 100%;
+  background-attachment: local, local, scroll, scroll;
+
+  &__table {
+    border: 2px solid rgba(235, 235, 235, 0.99);
+    border-collapse: collapse;
+
+  }
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 3px solid #fff;
+    background-color: rgba(0, 0, 0, .3);
+  }
+
+  &__cell--data,
+  &__cell--header {
+    text-align: left;
+    padding: .75rem;
+  }
+  &__cell--header {
+    padding-right: 2rem;
+    background-color: rgba(235, 235, 235, 0.99);
+  }
+}

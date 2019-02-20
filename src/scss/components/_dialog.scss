@@ -111,6 +111,12 @@ dialog::backdrop {
   text-align: center;
   cursor: pointer;
   transition: 0.15s;
+
+  &:focus {
+    outline: 1px dashed #2368a2;
+    line-height: 0;
+    padding: 0;
+  }
 }
 
 @media screen and (min-width: 700px) {
