@@ -12,10 +12,10 @@
       </thead>
       <tbody>
         <tr :key="book.id" v-for="book in books" class="o-table__row">
-          <td class="o-table__cell--data">{{ book.title }}</td>
+          <td class="o-table__cell--data"><b>{{ book.title }}</b></td>
           <td class="o-table__cell--data">{{ book.author }}</td>
           <td class="o-table__cell--data">{{ book.published }}</td>
-          <td class="o-table__cell--data o-table__cell--price"><b>{{ book.price | toEUR }}</b></td>
+          <td class="o-table__cell--data o-table__cell--price">{{ book.price | toEUR }}</td>
           <td class="o-table__cell--data">
             <button
               @click="openDialog(book.id)"
@@ -23,7 +23,7 @@
             >
               More Info
             </button>
-            <shopping-cart-button :product-id="book.id"></shopping-cart-button>
+            <shopping-cart-button :product="book"></shopping-cart-button>
             <portal to="dialog">
               <a11y-dialog
                 :class-names="{
@@ -40,10 +40,9 @@
                 @dialog-ref="assignDialogRef"
               >
                 <h1 class="dialog-title" slot="title">
-                  Info about <b>{{ book.title }}</b>
+                  <b>{{ book.title }}</b>
                 </h1>
-                Go to <a class="o-link" :href="book.info">{{ book.info }}</a> to
-                read more.
+                <p>This is an awesome book from {{ book.author }}, published {{ book.published }}. Go to <a class="o-link" :href="book.info">{{ book.info }}</a> to learn more.</p>
               </a11y-dialog>
             </portal>
           </td>

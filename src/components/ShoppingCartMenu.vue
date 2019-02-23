@@ -1,12 +1,15 @@
 <template>
-  <details ref="details"
-    ><summary data-vue-menu-button>Shopping Cart</summary>
-    <div data-vue-menu>
-      <ul :key="item.id" v-for="item in shoppingCartItems">
-        <li>{{ item }}</li>
-      </ul>
-    </div>
-  </details>
+  <div class="shopping-cart">
+    <div class="shopping-cart__item-count" v-show="numberOfCartItems">{{ numberOfCartItems }}</div>
+    <details ref="details">
+      <summary data-vue-menu-button>Shopping Cart</summary>
+      <div data-vue-menu>
+        <ul :key="item.id" v-for="item in shoppingCartItems">
+          <li>{{ item.title }}</li>
+        </ul>
+      </div>
+    </details>
+  </div>
 </template>
 
 <script>
@@ -17,8 +20,11 @@ export default {
     document.addEventListener("click", this.documentClick);
   },
   computed: {
-    shoppingCartItems: function () {
+    shoppingCartItems: function() {
       return store.getters.shoppingCartItems;
+    },
+    numberOfCartItems: function() {
+      return this.shoppingCartItems.length;
     }
   },
   methods: {
@@ -108,6 +114,26 @@ export default {
 [tabindex="-1"]:focus,
 *::-moz-focus-inner {
   border: 0;
+}
+
+.shopping-cart {
+  position: relative;
+}
+
+.shopping-cart__item-count {
+  position: absolute;
+  right: -.5rem;
+  top: -.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #484848;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 80%;
 }
 
 @keyframes slide-down {

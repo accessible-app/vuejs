@@ -12,15 +12,15 @@ const store = new Vuex.Store({
     toggleEnhancedFocus(state) {
       state.enhancedFocus = !state.enhancedFocus;
     },
-    toggleShoppingCartState(state, id) {
-      if (state.shoppingCartItems.includes(id)) {
+    toggleShoppingCartState(state, product) {
+      if (state.shoppingCartItems.includes(product)) {
         // Remove from shopping cart
         state.shoppingCartItems = state.shoppingCartItems.filter(
-          item => item !== id
+          item => item !== product
         );
       } else {
         // Add to shopping cart
-        state.shoppingCartItems.push(id);
+        state.shoppingCartItems.push(product);
       }
     }
   },
@@ -28,8 +28,8 @@ const store = new Vuex.Store({
     getEnhancedFocus: state => {
       return state.enhancedFocus;
     },
-    getProductIsInShoppingCart: (state) => (id) => {
-      return state.shoppingCartItems.includes(id);
+    getProductIsInShoppingCart: (state) => (product) => {
+      return state.shoppingCartItems.includes(product);
     },
     shoppingCartItems: state => {
       return state.shoppingCartItems;

@@ -1,10 +1,10 @@
 <template>
-  <button
-    class="o-button o-button--secondary"
-    @click="toggleShoppingCartState(productId)"
-  >
-    {{ label }}
-  </button>
+    <button
+      class="o-button o-button--secondary"
+      @click="toggleShoppingCartState(product)"
+    >
+      {{ label }}
+    </button>
 </template>
 
 <script>
@@ -12,14 +12,17 @@ import store from "../store";
 
 export default {
   computed: {
-    label: function () {
-      return (store.getters.getProductIsInShoppingCart(this.productId)) ? "Remove from cart" : "Add to cart";
-    }
+    label: function() {
+      return store.getters.getProductIsInShoppingCart(this.product)
+        ? "Remove from cart"
+        : "Add to cart";
+    },
+
   },
-  props: ["product-id"],
+  props: ["product"],
   methods: {
-    toggleShoppingCartState: function(id) {
-      store.commit("toggleShoppingCartState", id);
+    toggleShoppingCartState: function(product) {
+      store.commit("toggleShoppingCartState", product);
     }
   }
 };
