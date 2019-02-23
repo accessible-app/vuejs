@@ -25,11 +25,12 @@
   text-transform: uppercase;
   font-size: .75rem;
   padding: .33rem;
-  margin-right: .5rem;
+  min-width: 9rem;
+  margin-right: 1rem;
   margin-bottom: .5rem;
 
   & + & {
-    margin-left: 0;
+    margin: 0 .5rem 0 0;
   }
 }
 

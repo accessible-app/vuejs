@@ -15,14 +15,15 @@
           <td class="o-table__cell--data">{{ book.title }}</td>
           <td class="o-table__cell--data">{{ book.author }}</td>
           <td class="o-table__cell--data">{{ book.published }}</td>
-          <td class="o-table__cell--data">{{ book.price | toEUR }}</td>
+          <td class="o-table__cell--data o-table__cell--price"><b>{{ book.price | toEUR }}</b></td>
           <td class="o-table__cell--data">
-            <button @click="openDialog(book.id)" class="o-button o-button--secondary">
+            <button
+              @click="openDialog(book.id)"
+              class="o-button o-button--secondary"
+            >
               More Info
             </button>
-            <button :data-id="book.id" class="o-button o-button--secondary">
-              Add To Cart
-            </button>
+            <shopping-cart-button :product-id="book.id"></shopping-cart-button>
             <portal to="dialog">
               <a11y-dialog
                 :class-names="{
@@ -53,8 +54,13 @@
 </template>
 
 <script>
+import ShoppingCartButton from "../components/ShoppingCartButton";
+
 export default {
   name: "ProductTable",
+  components: {
+    ShoppingCartButton
+  },
   methods: {
     assignDialogRef(dialog) {
       let id = dialog.dialog.parentNode.dataset.id;
