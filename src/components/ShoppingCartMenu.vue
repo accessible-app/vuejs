@@ -1,14 +1,25 @@
 <template>
   <details ref="details"
     ><summary data-vue-menu-button>Shopping Cart</summary>
-    <div data-vue-menu>Content</div>
+    <div data-vue-menu>
+      <ul :key="item.id" v-for="item in shoppingCartItems">
+        <li>{{ item }}</li>
+      </ul>
+    </div>
   </details>
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   created() {
     document.addEventListener("click", this.documentClick);
+  },
+  computed: {
+    shoppingCartItems: function () {
+      return store.getters.shoppingCartItems;
+    }
   },
   methods: {
     documentClick(e) {

@@ -30,6 +30,9 @@ const store = new Vuex.Store({
     },
     getProductIsInShoppingCart: (state) => (id) => {
       return state.shoppingCartItems.includes(id);
+    },
+    shoppingCartItems: state => {
+      return state.shoppingCartItems;
     }
   }
 });
