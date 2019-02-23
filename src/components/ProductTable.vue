@@ -17,7 +17,7 @@
           <td class="o-table__cell--data">{{ book.published }}</td>
           <td class="o-table__cell--data">{{ book.price | toEUR }}</td>
           <td class="o-table__cell--data">
-            <button @click="openDialog" class="o-button o-button--secondary">
+            <button @click="openDialog(book.id)" class="o-button o-button--secondary">
               More Info
             </button>
             <button :data-id="book.id" class="o-button o-button--secondary">
@@ -35,6 +35,7 @@
                 disable-native
                 id="app-dialog"
                 app-root="#wrapper"
+                :data-id="book.id"
                 @dialog-ref="assignDialogRef"
               >
                 <h1 class="dialog-title" slot="title">
@@ -56,17 +57,19 @@ export default {
   name: "ProductTable",
   methods: {
     assignDialogRef(dialog) {
-      this.dialog = dialog;
+      let id = dialog.dialog.parentNode.dataset.id;
+      this.dialogs[id] = dialog;
     },
-    openDialog() {
-      if (this.dialog) {
-        this.dialog.show();
+    openDialog(i) {
+      if (this.dialogs[i]) {
+        this.dialogs[i].show();
       }
     }
   },
 
   data: function() {
     return {
+      dialogs: [],
       books: [
         {
           id: 1,
@@ -85,7 +88,7 @@ export default {
           info: "http://inclusive-components.design/"
         },
         {
-          id: 2,
+          id: 3,
           title: "Inclusive Design Patterns",
           author: "Heydon Pickering",
           published: 2016,
