@@ -15,7 +15,7 @@
           <td class="o-table__cell--data">{{ book.title }}</td>
           <td class="o-table__cell--data">{{ book.author }}</td>
           <td class="o-table__cell--data">{{ book.published }}</td>
-          <td class="o-table__cell--data">{{ formatEuro(book.price) }}</td>
+          <td class="o-table__cell--data">{{ book.price | toEUR }}</td>
           <td class="o-table__cell--data">
             <button @click="openDialog" class="o-button o-button--secondary">
               More Info
@@ -62,9 +62,6 @@ export default {
       if (this.dialog) {
         this.dialog.show();
       }
-    },
-    formatEuro(value) {
-      return "€ " + (value / 100).toLocaleString("de-DE", {minimumFractionDigits: 2});
     }
   },
 

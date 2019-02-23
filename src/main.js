@@ -13,6 +13,10 @@ Vue.use(A11yDialog);
 
 Vue.config.productionTip = false;
 
+Vue.filter('toEUR', function (value) {
+  return "€ " + (value / 100).toLocaleString("de-DE", {minimumFractionDigits: 2});
+});
+
 new Vue({
   store,
   router,
