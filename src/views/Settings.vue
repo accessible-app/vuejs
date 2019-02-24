@@ -17,10 +17,10 @@
 import store from "../store";
 
 export default {
-  data() {
-    return {
-      reducedMotion: false
-    };
+  computed: {
+    reducedMotion: function () {
+      return store.getters.getReducedMotion;
+    }
   },
   name: "settings",
   methods: {
