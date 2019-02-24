@@ -6,11 +6,15 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     enhancedFocus: false,
+    reducedMotion: false,
     shoppingCartItems: []
   },
   mutations: {
     toggleEnhancedFocus(state) {
       state.enhancedFocus = !state.enhancedFocus;
+    },
+    toggleReducedMotion(state) {
+      state.reducedMotion = !state.reducedMotion;
     },
     toggleShoppingCartState(state, product) {
       if (state.shoppingCartItems.includes(product)) {
@@ -30,6 +34,9 @@ const store = new Vuex.Store({
   getters: {
     getEnhancedFocus: state => {
       return state.enhancedFocus;
+    },
+    getReducedMotion: state => {
+      return state.reducedMotion;
     },
     getProductIsInShoppingCart: (state) => (product) => {
       return state.shoppingCartItems.includes(product);

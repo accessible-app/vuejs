@@ -151,7 +151,7 @@ export default {
 }
 
 .c-shopping-cart__remove-all {
-  margin-top: .66rem;
+  margin-top: 0.66rem;
   float: right;
 }
 
@@ -261,5 +261,26 @@ export default {
   100% {
     transform: scale(1);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [open] [data-vue-menu] {
+    animation: none;
+    -webkit-animation: none;
+  }
+
+  .bounce-enter-active {
+    animation: none;
+    -webkit-animation: none;
+  }
+}
+.user-prefers-reduced-motion-reduce [open] [data-vue-menu] {
+  animation: none;
+  -webkit-animation: none;
+}
+
+.user-prefers-reduced-motion-reduce .bounce-enter-active {
+  animation: none;
+  -webkit-animation: none;
 }
 </style>

@@ -126,3 +126,25 @@ dialog::backdrop {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .dialog:not([aria-hidden='true']) > .dialog-overlay {
+    animation: none;
+    -webkit-animation: none;
+  }
+
+  .dialog:not([aria-hidden='true']) > .dialog-content {
+    animation: none;
+    -webkit-animation: none;
+  }
+}
+
+.user-prefers-reduced-motion-reduce .dialog:not([aria-hidden='true']) > .dialog-overlay {
+  animation: none;
+  -webkit-animation: none;
+}
+
+.user-prefers-reduced-motion-reduce .dialog:not([aria-hidden='true']) > .dialog-content {
+  animation: none;
+  -webkit-animation: none;
+}
+

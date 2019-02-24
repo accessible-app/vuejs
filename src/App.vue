@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-bind:class="{ 'c-a11yapp--enhanced-focus': enhancedFocus }">
+  <div id="app" v-bind:class="{ 'c-a11yapp--enhanced-focus': enhancedFocus, 'user-prefers-reduced-motion-reduce': reducedMotion }">
     <div id="wrapper">
       <header role="banner">
         <div class="c-top-bar">
@@ -36,7 +36,10 @@ export default {
   computed: {
     enhancedFocus() {
       return store.getters.getEnhancedFocus;
-    }
+    },
+    reducedMotion() {
+      return store.getters.getReducedMotion;
+    },
   },
   components: { Logline, Navigation, Logo, UserActions, AccessibleAppInfo },
   watch: {
