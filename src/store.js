@@ -22,6 +22,9 @@ const store = new Vuex.Store({
         // Add to shopping cart
         state.shoppingCartItems.push(product);
       }
+    },
+    removeAllShoppingCartItems(state) {
+      state.shoppingCartItems = [];
     }
   },
   getters: {

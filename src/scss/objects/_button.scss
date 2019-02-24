@@ -34,3 +34,14 @@
   }
 }
 
+.o-button--bare {
+  padding: .25rem .5rem;
+  color: $color-brand-primary;
+  display: inline-flex;
+
+  &:focus,
+  &:hover {
+    color: #ffffff;
+  }
+}
+
