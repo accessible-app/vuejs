@@ -1,5 +1,11 @@
 <template>
-  <div id="app" v-bind:class="{ 'c-a11yapp--enhanced-focus': enhancedFocus, 'user-prefers-reduced-motion-reduce': reducedMotion }">
+  <div
+    id="app"
+    v-bind:class="{
+      'c-a11yapp--enhanced-focus': enhancedFocus,
+      'user-prefers-reduced-motion-reduce': reducedMotion
+    }"
+  >
     <div id="wrapper">
       <header role="banner">
         <div class="c-top-bar">
@@ -14,7 +20,9 @@
         </div>
       </header>
       <div class="o-layout-inner">
-        <main role="main" class="c-content"><router-view ref="routerView"></router-view></main>
+        <main role="main" class="c-content">
+          <router-view ref="routerView"></router-view>
+        </main>
       </div>
       <AccessibleAppInfo />
       <footer role="contentinfo"></footer>
@@ -39,7 +47,7 @@ export default {
     },
     reducedMotion() {
       return store.getters.getReducedMotion;
-    },
+    }
   },
   components: { Logline, Navigation, Logo, UserActions, AccessibleAppInfo },
   watch: {
@@ -67,7 +75,6 @@ export default {
           // setAriaCurrent in navigation only after focus management
           this.setAriaCurrent();
         }, 0);
-
       });
     }
   },
@@ -77,21 +84,22 @@ export default {
   methods: {
     setAriaCurrent() {
       this.$nextTick(function() {
-        let nav = this.$refs.navMain.$el,
-          current = nav.querySelector("[aria-current]");
+        let app = this.$el,
+          currents = app.querySelectorAll("[aria-current]");
 
-        if (current) {
-          current.removeAttribute("aria-current");
+        if (currents) {
+          currents.forEach(current => {
+            current.removeAttribute("aria-current");
+          });
         }
 
-        nav
-          .querySelector(".router-link-exact-active")
-          .setAttribute("aria-current", "page");
+        app.querySelectorAll(".router-link-exact-active").forEach(current => {
+          current.setAttribute("aria-current", "page");
+        });
       });
     }
   }
 };
-
 </script>
 
 <style lang="scss">

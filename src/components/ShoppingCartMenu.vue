@@ -236,6 +236,10 @@ export default {
   font-size: 80%;
 }
 
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+
 @keyframes slide-down {
   0% {
     opacity: 0;
@@ -245,10 +249,6 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
 }
 
 @keyframes bounce-in {

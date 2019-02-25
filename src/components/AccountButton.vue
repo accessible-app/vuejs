@@ -1,77 +1,43 @@
 <template>
-  <menu-wrapper>
-    <template slot="menu-button"
+  <navigation-menu>
+    <template slot="summary"
       >Account
     </template>
-    <template slot="menu-content">
-      <menu-link>
-        <router-link to="/orders">Past Orders</router-link>
-      </menu-link>
-      <menu-link>
-        <router-link to="/settings">My Settings</router-link>
-      </menu-link>
-      <menu-item @click="doSomething">Clear my Shopping cart</menu-item>
+    <template slot="details-content">
+      <ul data-vue-summary-list>
+        <li>
+          <router-link data-vue-summary-link to="/orders"
+            >Past Orders</router-link
+          >
+        </li>
+        <li>
+          <router-link data-vue-summary-link to="/settings"
+            >My Settings</router-link
+          >
+        </li>
+      </ul>
     </template>
-  </menu-wrapper>
+  </navigation-menu>
 </template>
 
 <script>
-import { MenuWrapper, MenuItem, MenuLink } from "vue-menu-button";
+import NavigationMenu from "./NavigationMenu";
 
 export default {
   components: {
-    MenuWrapper,
-    MenuItem,
-    MenuLink
-  },
-  methods: {
-    doSomething() {
-      alert("Example Action");
-    }
+    NavigationMenu
   }
 };
 </script>
 
 <style>
-[data-vue-menu] {
-  background-color: #ffffff;
+[data-vue-summary-list] {
   list-style: none;
-  margin: 10px 0 0 0;
-  width: 220px;
-  padding: 10px 0;
-  border: 1px solid #2368a2;
-  animation: slide-down 0.2s ease;
-  position: absolute;
-  z-index: 10;
-  box-shadow: 4px 4px 6px 0 #6665654d;
+  margin: 0;
+  padding: 0;
 }
 
-[data-vue-menu]::before {
-  content: "";
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #2368a2;
-  top: -7px;
-  left: 15px;
-}
-
-[data-vue-menu]::after {
-  content: "";
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid white;
-  top: -6px;
-  left: 16px;
-}
-
-[data-vue-menu-item],
-[data-vue-menu-link] {
+[data-vue-summary-link] {
   color: inherit;
   text-decoration: none;
   line-height: 28px;
@@ -81,35 +47,27 @@ export default {
   display: block;
 }
 
-[data-vue-menu-item]:focus,
-[data-vue-menu-link]:focus {
+[data-vue-summary-link]:focus {
   outline: 0;
   background-color: #2368a2;
   color: #fff;
   display: block;
 }
 
-[data-vue-menu-item]:hover,
-[data-vue-menu-link]:hover {
+[data-vue-summary-link]:hover {
   outline: 0;
   background-color: #2368a2;
   color: #fff;
   display: block;
 }
 
-[tabindex="-1"]:focus,
-*::-moz-focus-inner {
-  border: 0;
+[aria-current] {
+  font-weight: 700;
 }
 
-@keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/*[tabindex="-1"]:focus,*/
+/**::-moz-focus-inner {*/
+/*border: 0;*/
+/*}*/
+/**/
 </style>
