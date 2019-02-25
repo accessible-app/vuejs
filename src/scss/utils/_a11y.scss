@@ -25,3 +25,19 @@
 [tabindex="-1"]:focus {
   outline: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+
+  * {
+    animation: none !important;
+    -webkit-animation: none !important;
+  }
+}
+
+.user-prefers-reduced-motion-reduce {
+
+  * {
+    animation: none !important;
+    -webkit-animation: none !important;
+  }
+}

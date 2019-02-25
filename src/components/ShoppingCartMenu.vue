@@ -262,25 +262,4 @@ export default {
     transform: scale(1);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  [open] [data-vue-menu] {
-    animation: none;
-    -webkit-animation: none;
-  }
-
-  .bounce-enter-active {
-    animation: none;
-    -webkit-animation: none;
-  }
-}
-.user-prefers-reduced-motion-reduce [open] [data-vue-menu] {
-  animation: none;
-  -webkit-animation: none;
-}
-
-.user-prefers-reduced-motion-reduce .bounce-enter-active {
-  animation: none;
-  -webkit-animation: none;
-}
 </style>
