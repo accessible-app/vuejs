@@ -6,6 +6,7 @@
       'user-prefers-reduced-motion-reduce': reducedMotion
     }"
   >
+    <vue-announcer />
     <div id="wrapper">
       <header role="banner">
         <div class="c-top-bar">

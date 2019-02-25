@@ -102,11 +102,17 @@ export default {
           // If last cart item gets removed, send focus to Shopping Cart trigger instead
           this.focusTrigger();
         }
+
+        let message = `${item.title} has been removed`;
+        this.$announcer.set(message);
       });
     },
     removeAllItems() {
       store.commit("removeAllShoppingCartItems");
       this.$refs.details.setAttribute("open", "");
+
+      let message = `Shopping cart is now empty`;
+      this.$announcer.set(message);
 
       this.focusTrigger();
     },
