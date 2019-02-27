@@ -28,9 +28,6 @@ export default {
     },
     closeHandler() {
       this.$refs.details.removeAttribute("open");
-    },
-    focusTrigger() {
-      this.$refs.button.focus();
     }
   }
 };
