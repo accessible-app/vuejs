@@ -107,7 +107,6 @@ export default {
     },
     removeAllItems() {
       store.commit("removeAllShoppingCartItems");
-      this.$refs.details.setAttribute("open", "");
 
       let message = `Shopping cart is now empty`;
       this.$announcer.set(message);
