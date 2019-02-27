@@ -12,10 +12,14 @@
       </thead>
       <tbody>
         <tr :key="book.id" v-for="book in books" class="o-table__row">
-          <td class="o-table__cell--data"><b>{{ book.title }}</b></td>
+          <td class="o-table__cell--data">
+            <b>{{ book.title }}</b>
+          </td>
           <td class="o-table__cell--data">{{ book.author }}</td>
           <td class="o-table__cell--data">{{ book.published }}</td>
-          <td class="o-table__cell--data o-table__cell--price">{{ book.price | toEUR }}</td>
+          <td class="o-table__cell--data o-table__cell--price">
+            {{ book.price | toEUR }}
+          </td>
           <td class="o-table__cell--data">
             <button
               @click="openDialog(book.id)"
@@ -42,7 +46,12 @@
                 <h1 class="dialog-title" slot="title">
                   <b>{{ book.title }}</b>
                 </h1>
-                <p>This is an awesome book from {{ book.author }}, published {{ book.published }}. Go to <a class="o-link" :href="book.info">{{ book.info }}</a> to learn more.</p>
+                <p>
+                  This is an awesome book from {{ book.author }}, published
+                  {{ book.published }}. Go to
+                  <a class="o-link" :href="book.info">{{ book.info }}</a> to
+                  learn more.
+                </p>
               </a11y-dialog>
             </portal>
           </td>

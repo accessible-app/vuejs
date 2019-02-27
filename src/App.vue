@@ -22,7 +22,9 @@
       </header>
       <div class="o-layout-inner">
         <main role="main" class="c-content">
-          <router-view ref="routerView"></router-view>
+          <keep-alive>
+            <router-view ref="routerView"></router-view>
+          </keep-alive>
         </main>
       </div>
       <AccessibleAppInfo />

@@ -2,18 +2,16 @@
   <div class="c-user-actions">
     <shopping-cart-menu />
     <account-button />
-
   </div>
 </template>
 
 <script>
 import AccountButton from "../components/AccountButton";
 import ShoppingCartMenu from "../components/ShoppingCartMenu";
-import NavigationMenu from "../components/NavigationMenu";
 
 export default {
   name: "UserActions",
-  components: { AccountButton, ShoppingCartMenu, NavigationMenu },
+  components: { AccountButton, ShoppingCartMenu },
   methods: {
     assignDialogRef(dialog) {
       this.dialog = dialog;

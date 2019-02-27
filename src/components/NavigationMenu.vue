@@ -22,7 +22,7 @@ export default {
     documentClick(e) {
       let el = this.$refs.details;
       let target = e.target;
-      if (el !== target && !el.contains(target)) {
+      if (el !== target && !el.contains(target) && target.nodeName !== "BUTTON") {
         this.closeHandler();
       }
     },
@@ -38,8 +38,8 @@ export default {
   background-color: #ffffff;
   list-style: none;
   margin: 10px 0 0 0;
-  min-width: 320px;
-  padding: 10px 0;
+  min-width: 300px;
+  padding: 10px;
   border: 1px solid #2368a2;
   animation: slide-down 0.2s ease;
   position: absolute;
@@ -49,6 +49,7 @@ export default {
 
 [data-vue-details-summmary] {
   list-style: none;
+  cursor: pointer;
 }
 
 [data-vue-details-content]::before {
