@@ -52,6 +52,11 @@ export default {
   cursor: pointer;
 }
 
+[data-vue-details-summmary]::-webkit-details-marker {
+  display: none
+}
+
+
 [data-vue-details-content]::before {
   content: "";
   width: 0;
