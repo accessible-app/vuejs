@@ -1,6 +1,6 @@
 <template>
   <nav aria-labelledby="main-nav-title">
-    <h2 class="u-visually-hidden" id="main-nav-title">Main</h2>
+    <h2 class="u-visually-hidden" id="main-nav-title">Main Menu</h2>
     <ul class="c-nav-main">
       <li><router-link to="/">Products</router-link></li>
       <li><router-link to="/about">About</router-link></li>
