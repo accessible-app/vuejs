@@ -24,7 +24,7 @@
             v-for="item in shoppingCartItems"
           >
             <li class="c-shopping-cart__list-item" role="presentation">
-              <span :id="'product' + item.id">{{ item.title }}</span>
+              <span :id="'product' + item.id" aria-hidden="true">{{ item.title }}</span>
               <button
                 role="menuitem"
                 :id="'delete' + item.id"
