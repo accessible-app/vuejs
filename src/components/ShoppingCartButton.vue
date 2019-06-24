@@ -24,8 +24,8 @@ export default {
       store.commit("toggleShoppingCartState", product);
 
       let message = store.getters.getProductIsInShoppingCart(this.product)
-          ? `${product.title} has been added to from cart`
-          : `${product.title} has been removed from cart`;
+          ? `${product.title} has been added to your cart`
+          : `${product.title} has been removed from your cart`;
 
       this.$announcer.set(message);
     }
