@@ -1,5 +1,5 @@
 <template>
-  <action-menu class="c-shopping-cart" ref="menu" :is-disabled="!numberOfCartItems">
+  <vue-menu class="c-shopping-cart" ref="menu" :is-disabled="!numberOfCartItems">
     <template slot="head">
       <transition name="bounce">
         <div
@@ -18,15 +18,13 @@
       <div data-vue-menu>
         <div v-if="shoppingCartItems.length">
           <ul
-            role="presentation"
             class="c-shopping-cart__list"
             :key="item.id"
             v-for="item in shoppingCartItems"
           >
-            <li class="c-shopping-cart__list-item" role="presentation">
-              <span :id="'product' + item.id" aria-hidden="true">{{ item.title }}</span>
+            <li class="c-shopping-cart__list-item">
+              {{ item.title }}
               <button
-                role="menuitem"
                 :id="'delete' + item.id"
                 data-close-button
                 @click="removeItem(item)"
@@ -51,15 +49,12 @@
                   <line x1="10" y1="11" x2="10" y2="17"></line>
                   <line x1="14" y1="11" x2="14" y2="17"></line>
                 </svg>
-                <span class="u-visually-hidden"
-                  :aria-labelledby="'product' + item.id + ' delete' + item.id"
-                  >Remove from shopping cart</span
+                <span class="u-visually-hidden">Remove from shopping cart</span
                 >
               </button>
             </li>
           </ul>
           <button
-            role="menuitem"
             @click="removeAllItems"
             class="u-button-link-look o-link c-shopping-cart__remove-all"
           >
@@ -68,16 +63,16 @@
         </div>
       </div>
     </template>
-  </action-menu>
+  </vue-menu>
 </template>
 
 <script>
 import store from "../store";
-import ActionMenu from "./ActionMenu";
+import VueMenu from "./Menu";
 
 export default {
   components: {
-    ActionMenu
+    VueMenu
   },
   created() {
     document.addEventListener("click", this.documentClick);

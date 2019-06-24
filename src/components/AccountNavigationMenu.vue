@@ -1,5 +1,5 @@
 <template>
-  <navigation-menu>
+  <vue-menu>
     <template slot="button"
       >Account
     </template>
@@ -17,15 +17,15 @@
         </li>
       </ul>
     </template>
-  </navigation-menu>
+  </vue-menu>
 </template>
 
 <script>
-import NavigationMenu from "./NavigationMenu";
+import VueMenu from "./Menu";
 
 export default {
   components: {
-    NavigationMenu
+    VueMenu
   }
 };
 </script>

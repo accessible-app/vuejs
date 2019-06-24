@@ -7,7 +7,7 @@
 
 <script>
 import AccountMenu from "../components/AccountNavigationMenu";
-import ShoppingCartMenu from "../components/ShoppingCartActionMenu";
+import ShoppingCartMenu from "../components/ShoppingCartMenu";
 
 export default {
   name: "UserActions",

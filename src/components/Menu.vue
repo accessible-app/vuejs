@@ -1,30 +1,21 @@
 <template>
-  <div ref="actionmenu" >
+  <div ref="menu">
     <slot name="head"></slot>
     <button
       :disabled="isDisabled"
       class="o-button"
-      aria-haspopup="true"
       :aria-expanded="open.toString()"
       :aria-controls="id"
       @click="toggleOpen"
-      @keyup.down="openMenuAndFocus(0)"
-      @keyup.up="openMenuAndFocus(-1)"
       data-button
-      ref="button"
     >
       <slot name="button"></slot>
     </button>
     <div
       data-content
-      role="menu"
       :id="id"
       :aria-hidden="(!open).toString()"
       @click="closeHandler"
-      @keydown.esc="closeHandler(true)"
-      @keyup.down="focusNext"
-      @keyup.up="focusPrev"
-      ref="list"
     >
       <slot name="content"></slot>
     </div>
@@ -36,13 +27,11 @@ export default {
   data: function() {
     return {
       open: false,
-      focusables: null,
-      focusedMenuItem: null,
       id: null
     };
   },
   props: ["is-disabled"],
-  name: "ActionMenu",
+  name: "VueMenu",
   created() {
     document.addEventListener("click", this.documentClick);
   },
@@ -50,14 +39,12 @@ export default {
     this.id = Math.random()
       .toString(36)
       .substring(2, 15);
+
     window.addEventListener("keyup", e => {
       if (e.key === "Escape") {
         this.closeHandler();
       }
     });
-  },
-  updated: function() {
-    this.focusables = this.$refs.list.querySelectorAll("button");
   },
   destroyed: function() {
     document.removeEventListener("keyup", this.closeHandler);
@@ -65,49 +52,16 @@ export default {
   methods: {
     toggleOpen() {
       this.open = !this.open;
-      if (this.open) {
-        this.openMenuAndFocus(0);
-      }
-    },
-    openMenuAndFocus(index) {
-      this.open = true;
-      this.focusedMenuItem = index === -1 ? this.focusables.length - 1 : index;
-      this.setMenuItemFocus(this.focusedMenuItem);
     },
     documentClick(e) {
-      let el = this.$refs.actionmenu;
+      let el = this.$refs.menu;
       let target = e.target;
-      if (
-        el !== target &&
-        !el.contains(target)
-      ) {
+      if (el !== target && !el.contains(target)) {
         this.closeHandler();
       }
     },
-    focusNext() {
-      if (this.focusedMenuItem + 1 >= this.focusables.length) {
-        this.focusedMenuItem = 0;
-      } else {
-        this.focusedMenuItem = this.focusedMenuItem + 1;
-      }
-      this.setMenuItemFocus(this.focusedMenuItem);
-    },
-    focusPrev() {
-      if (this.focusedMenuItem === 0) {
-        this.focusedMenuItem = this.focusables.length - 1;
-      } else {
-        this.focusedMenuItem = this.focusedMenuItem - 1;
-      }
-      this.setMenuItemFocus(this.focusedMenuItem);
-    },
-    setMenuItemFocus(index) {
-      setTimeout(() => {
-        this.focusables[index].focus();
-      }, 0);
-    },
-    closeHandler(andFocusButton) {
+    closeHandler() {
       this.open = false;
-      if (andFocusButton) this.$refs.button.focus();
     }
   }
 };
