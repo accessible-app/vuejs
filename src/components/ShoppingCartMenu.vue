@@ -1,5 +1,5 @@
 <template>
-  <navigation-menu class="c-shopping-cart" ref="details">
+  <vue-menu class="c-shopping-cart" ref="menu" :is-disabled="!numberOfCartItems">
     <template slot="head">
       <transition name="bounce">
         <div
@@ -7,14 +7,14 @@
           :key="numberOfCartItems"
           v-show="numberOfCartItems"
         >
-          {{ numberOfCartItems }}
+          {{ numberOfCartItems }} <span class="u-visually-hidden"> items</span>
         </div>
       </transition>
     </template>
-    <template slot="summary"
-      >Shopping Cart
+    <template slot="button"
+      >Shopping Cart <span class="u-visually-hidden" v-if="!numberOfCartItems">(empty)</span>
     </template>
-    <template slot="details-content">
+    <template slot="content">
       <div data-vue-menu>
         <div v-if="shoppingCartItems.length">
           <ul
@@ -25,9 +25,10 @@
             <li class="c-shopping-cart__list-item">
               {{ item.title }}
               <button
+                :id="'delete' + item.id"
                 data-close-button
                 @click="removeItem(item)"
-                aria-label="Remove product from shopping cart"
+                :aria-labelledby="'product' + item.id + ' delete' + item.id"
                 class="o-button o-button--bare"
               >
                 <svg
@@ -48,6 +49,8 @@
                   <line x1="10" y1="11" x2="10" y2="17"></line>
                   <line x1="14" y1="11" x2="14" y2="17"></line>
                 </svg>
+                <span class="u-visually-hidden">Remove from shopping cart</span
+                >
               </button>
             </li>
           </ul>
@@ -58,21 +61,18 @@
             Remove all items
           </button>
         </div>
-        <div v-if="!shoppingCartItems.length">
-          Your shopping cart is empty <span aria-hidden>:(</span>
-        </div>
       </div>
     </template>
-  </navigation-menu>
+  </vue-menu>
 </template>
 
 <script>
 import store from "../store";
-import NavigationMenu from "./NavigationMenu";
+import VueMenu from "./Menu";
 
 export default {
   components: {
-    NavigationMenu
+    VueMenu
   },
   created() {
     document.addEventListener("click", this.documentClick);
@@ -87,15 +87,13 @@ export default {
   },
   methods: {
     removeItem(item) {
-      let detailEl = this.$refs.details.$el.children[1];
+      let detailEl = this.$refs.menu.$el.children[1];
 
       store.commit("toggleShoppingCartState", item);
 
       setTimeout(() => {
         // Only here query for data-close-buttons
-        let closeButtons = detailEl.querySelectorAll(
-          "[data-close-button]"
-        );
+        let closeButtons = detailEl.querySelectorAll("[data-close-button]");
 
         if (closeButtons.length) {
           closeButtons[0].focus();

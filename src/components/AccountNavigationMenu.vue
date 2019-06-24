@@ -1,31 +1,31 @@
 <template>
-  <navigation-menu>
-    <template slot="summary"
+  <vue-menu>
+    <template slot="button"
       >Account
     </template>
-    <template slot="details-content">
+    <template slot="content">
       <ul data-vue-summary-list>
         <li>
-          <router-link data-vue-summary-link to="/orders"
+          <router-link data-menu-item to="/orders"
             >Past Orders</router-link
           >
         </li>
         <li>
-          <router-link data-vue-summary-link to="/settings"
+          <router-link data-menu-item to="/settings"
             >My Settings</router-link
           >
         </li>
       </ul>
     </template>
-  </navigation-menu>
+  </vue-menu>
 </template>
 
 <script>
-import NavigationMenu from "./NavigationMenu";
+import VueMenu from "./Menu";
 
 export default {
   components: {
-    NavigationMenu
+    VueMenu
   }
 };
 </script>
@@ -37,7 +37,7 @@ export default {
   padding: 0;
 }
 
-[data-vue-summary-link] {
+[data-menu-item] {
   color: inherit;
   text-decoration: none;
   line-height: 28px;
@@ -47,14 +47,14 @@ export default {
   display: block;
 }
 
-[data-vue-summary-link]:focus {
+[data-menu-item]:focus {
   outline: 0;
   background-color: #2368a2;
   color: #fff;
   display: block;
 }
 
-[data-vue-summary-link]:hover {
+[data-menu-item]:hover {
   outline: 0;
   background-color: #2368a2;
   color: #fff;

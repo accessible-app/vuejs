@@ -9,9 +9,15 @@
   padding: .5rem .75rem;
   border: 1px solid $color-brand-primary;
   color: $color-brand-primary;
+  opacity: 1;
+  transition: opacity .2s;
 
-  &:hover,
-  &:focus {
+  &[disabled] {
+    opacity: .33;
+  }
+
+  &:not([disabled]):hover,
+  &:not([disabled]):focus {
     color: $textcolor-brand-primary;
     background-color: $color-brand-primary;
     outline: 0;
@@ -23,7 +29,6 @@
 }
 
 .o-button--secondary {
-  text-transform: uppercase;
   font-size: .75rem;
   padding: .33rem;
   min-width: 9rem;

@@ -1,40 +1,78 @@
 <template>
-  <div>
+  <div ref="menu">
     <slot name="head"></slot>
-    <details ref="details">
-      <summary data-vue-details-summmary ref="summary"
-        ><slot name="summary"></slot
-      ></summary>
-      <div data-vue-details-content @click="closeHandler">
-        <slot name="details-content"></slot>
-      </div>
-    </details>
+    <button
+      :disabled="isDisabled"
+      class="o-button"
+      :aria-expanded="open.toString()"
+      :aria-controls="id"
+      @click="toggleOpen"
+      data-button
+    >
+      <slot name="button"></slot>
+    </button>
+    <div
+      data-content
+      :id="id"
+      :aria-hidden="(!open).toString()"
+      @click="closeHandler"
+    >
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NavigationMenu",
+  data: function() {
+    return {
+      open: false,
+      id: null
+    };
+  },
+  props: ["is-disabled"],
+  name: "VueMenu",
   created() {
     document.addEventListener("click", this.documentClick);
   },
+  mounted() {
+    this.id = Math.random()
+      .toString(36)
+      .substring(2, 15);
+
+    window.addEventListener("keyup", e => {
+      if (e.key === "Escape") {
+        this.closeHandler();
+      }
+    });
+  },
+  destroyed: function() {
+    document.removeEventListener("keyup", this.closeHandler);
+  },
   methods: {
+    toggleOpen() {
+      this.open = !this.open;
+    },
     documentClick(e) {
-      let el = this.$refs.details;
+      let el = this.$refs.menu;
       let target = e.target;
-      if (el !== target && !el.contains(target) && target.nodeName !== "BUTTON") {
+      if (el !== target && !el.contains(target)) {
         this.closeHandler();
       }
     },
     closeHandler() {
-      this.$refs.details.removeAttribute("open");
+      this.open = false;
     }
   }
 };
 </script>
 
 <style scoped>
-[open] [data-vue-details-content] {
+[data-content][aria-hidden="true"] {
+  display: none;
+}
+
+[data-content][aria-hidden="false"] {
   background-color: #ffffff;
   list-style: none;
   margin: 10px 0 0 0;
@@ -47,15 +85,9 @@ export default {
   box-shadow: 4px 4px 6px 0 #6665654d;
 }
 
-[data-vue-details-summmary] {
+[data-button] {
   list-style: none;
-  cursor: pointer;
 }
-
-[data-vue-details-summmary]::-webkit-details-marker {
-  display: none
-}
-
 
 [data-vue-details-content]::before {
   content: "";
