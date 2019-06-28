@@ -14,7 +14,7 @@
     <div
       data-content
       :id="id"
-      :aria-hidden="(!open).toString()"
+      :hidden="!open"
       @click="closeHandler"
     >
       <slot name="content"></slot>
@@ -68,11 +68,7 @@ export default {
 </script>
 
 <style scoped>
-[data-content][aria-hidden="true"] {
-  display: none;
-}
-
-[data-content][aria-hidden="false"] {
+[data-content] {
   background-color: #ffffff;
   list-style: none;
   margin: 10px 0 0 0;
