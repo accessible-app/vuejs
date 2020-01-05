@@ -14,7 +14,10 @@
     <button class="o-button o-button--bare" @click="startFakeQueryForOrders" v-if="!queryComplete && !isLoading">
       Click here to query our database for your past orders
     </button>
-    <ProgressBar ref="progressbar" v-if="isLoading" :value="value" />
+    <div v-if="isLoading">
+      <label for="loading-progress">Loading progress:</label>
+      <ProgressBar ref="progressbar" id="loading-progress" :value="value" />
+    </div>
     <div v-show="queryComplete" ref="loadedContent" tabindex="-1">
       <h2>Your past orders</h2>
       <ul>

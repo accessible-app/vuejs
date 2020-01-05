@@ -38,3 +38,9 @@
         }
     };
 </script>
+
+<style scoped>
+    progress {
+        display: block;
+    }
+</style>
