@@ -19,9 +19,6 @@
                 currentValue: 0,
             }
         },
-        mounted() {
-
-        },
         props: {
             min: {
                 type: Number,
