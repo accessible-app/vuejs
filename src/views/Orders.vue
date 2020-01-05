@@ -18,7 +18,7 @@
       <label for="loading-progress">Loading progress:</label>
       <ProgressBar ref="progressbar" id="loading-progress" :value="value" />
     </div>
-    <div v-show="queryComplete" ref="loadedContent" tabindex="-1">
+    <div v-if="queryComplete" ref="loadedContent" tabindex="-1">
       <h2>Your past orders</h2>
       <ul>
         <li>Accessibility For Everyone</li>
@@ -55,11 +55,11 @@ export default {
         });
       });
 
-      setInterval(this.fakeProgressIntervall, 750);
+      setInterval(this.fakeProgressIntervall, 1000);
     },
     fakeProgressIntervall() {
       if (this.value <= 100) {
-        this.value = this.value + 20;
+        this.value = this.value + 10;
       }
     },
     focusLoadedFakeContent() {
